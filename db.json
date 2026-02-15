@@ -1,0 +1,56 @@
+{
+  "dishes": [
+    {
+      "id": "dish-001",
+      "name": "Bruschetta de tomate",
+      "description": "Pan crujiente con tomate fresco, albahaca y aceite de oliva.",
+      "price": 6.5,
+      "category": "entrantes",
+      "enabled": true,
+      "image": "https://www.giallozafferano.es/images/2-292/Bruschettas-con-tomate_1200x800.jpg"
+    },
+    {
+      "id": "dish-002",
+      "name": "Risotto de setas",
+      "description": "Arroz cremoso con setas de temporada y parmesano.",
+      "role": "chef",
+      "category": "principales",
+      "enabled": true,
+      "image": "https://i.blogs.es/38ad9a/risotto_setas/840_560.jpg"
+    },
+    {
+      "id": "dish-003",
+      "name": "Tarta de queso",
+      "description": "Tarta de queso horneada con mermelada de frutos rojos.",
+      "price": 5.8,
+      "category": "postres",
+      "enabled": true,
+      "image": "https://i.ytimg.com/vi/4iBmo59k8Vc/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAM6gychuEZoIww6iJEoDvY2luR0w"
+    },
+    {
+      "id": "dish-005",
+      "name": "Croquetas de jamón",
+      "description": "Croquetas cremosas de jamón ibérico.",
+      "price": 7.2,
+      "category": "entrantes",
+      "enabled": true,
+      "image": "https://www.laespanolaaceites.com/wp-content/uploads/2019/06/croquetas-de-jamon-1080x671.jpg"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "chef",
+      "password": "chef",
+      "email": "chef@test.com",
+      "role": "chef"
+    },
+    {
+      "id": "2",
+      "username": "user1",
+      "password": "1234",
+      "email": "user1@test.com",
+      "role": "user"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg  custom-navbar ">
+<nav class="navbar navbar-expand-md  custom-navbar ">
 
   <div class="container-fluid d-flex justify-content-between align-items-center">
 
@@ -6,14 +6,37 @@
       Bocado Gourmet
     </a>
 
-    <div class="d-flex gap-4">
+    <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav d-flex align-items-lg-center gap-lg-4">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="/home" routerLinkActive="active">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/menu" routerLinkActive="active">Carta</a>
+        </li>
+        @if (isChef()) {
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin" routerLinkActive="active">Gestión</a>
+        </li>
+        }
+        @if (!isLoggedIn()) {
+        <li class="nav-item">
+          <a class="btn btn-outline-light ms-lg-3" routerLink="/login">Login</a>
+        </li>
+        } @else {
+        <li class="nav-item">
+          <a class="btn btn-outline-light ms-lg-3" routerLink="/logout">Logout</a>
+        </li>
+        }
+      </ul>
 
-      <a class="nav-link" routerLink="/home" routerLinkActive="active">Inicio</a>
-      <a class="nav-link" routerLink="/menu" routerLinkActive="active">Carta</a>
 
-      <a class="nav-link" routerLink="/admin" routerLinkActive="active">Gestión</a>
 
-      <a class="btn btn-outline-light ms-lg-3" routerLink="/login">Login</a>
+
 
     </div>
 

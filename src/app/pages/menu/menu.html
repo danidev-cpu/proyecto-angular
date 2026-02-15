@@ -1,73 +1,82 @@
 <div class="container mt-5">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h2 class="text-white mb-0">Nuestra Carta</h2>
+
+
     @if(!showInputDishes) {
-    <button class="btn btn-outline-light" (click)="showInputDish()">
+    <button type="button" class="btn btn-outline-light" (click)="showInputDish()">
       <i class="bi bi-plus">
         <span>Añadir plato</span>
       </i>
     </button>
     }
   </div>
-
   @if(showInputDishes) {
-  <div class="card bg-dark text-white mb-4 p-4">
-    <h5 class="mb-3">Nuevo plato</h5>
-    <div class="row">
-      <div class="col-md-6 mb-3">
-        <label class="form-label">Nombre</label>
-        <input type="text" class="form-control" [(ngModel)]="newDish.name" placeholder="Nombre del plato">
+  <div class="card bg-dark text-white mb-4 p-4 rounded-4">
+    <h5 class="mb-3 fw-bold">Nuevo plato</h5>
+
+    <form [formGroup]="formGroup" (ngSubmit)="addDish()">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="name" class="form-label">Nombre*</label>
+          <input id="name" type="text" class="form-control" name="name" formControlName="name" maxlength="50">
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="price" class="form-label">Precio*</label>
+          <input id="price" type="number" class="form-control" name="price" formControlName="price" min="0.01"
+            step="0.01">
+        </div>
+
+        <div class="col-12 mb-3">
+          <label for="description" class="form-label">Descripción*</label>
+          <textarea id="description" class="form-control" name="description" formControlName="description"
+            maxlength="200"></textarea>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="category" class="form-label">Categoría*</label>
+          <select id="category" class="form-select" name="category" formControlName="category">
+            <option value="entrantes">Entrantes</option>
+            <option value="principales">Principales</option>
+            <option value="postres">Postres</option>
+            <option value="bebidas">Bebidas</option>
+          </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="image" class="form-label">URL imagen</label>
+          <input id="image" type="text" class="form-control" name="image" formControlName="image">
+        </div>
       </div>
-      <div class="col-md-6 mb-3">
-        <label class="form-label">Precio</label>
-        <input type="number" class="form-control" [(ngModel)]="newDish.price" placeholder="Precio">
-      </div>
-    </div>
-    <div class="mb-3">
-      <label class="form-label">Descripción</label>
-      <textarea class="form-control" [(ngModel)]="newDish.description" placeholder="Descripción del plato"
-        rows="3"></textarea>
-    </div>
-    <div class="row">
-      <div class="col-md-6 mb-3">
-        <label class="form-label">Categoría</label>
-        <select class="form-select" [(ngModel)]="newDish.category">
-          <option value="entrantes">Entrantes</option>
-          <option value="principales">Principales</option>
-          <option value="postres">Postres</option>
-          <option value="bebidas">Bebidas</option>
-        </select>
-      </div>
-      <div class="col-md-6 mb-3">
-        <label class="form-label">URL Imagen</label>
-        <input type="text" class="form-control" [(ngModel)]="newDish.image" placeholder="URL de la imagen">
-      </div>
-    </div>
-    <div class="mb-3">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" [(ngModel)]="newDish.enabled" id="enabledCheck">
-        <label class="form-check-label" for="enabledCheck">
-          Habilitado
-        </label>
-      </div>
-    </div>
+    </form>
+
     <div class="d-flex gap-2">
-      <button class="btn btn-success" (click)="addDish()">Guardar plato</button>
+      <button class="btn btn-outline-light" (click)="addDish()">Guardar plato</button>
       <button class="btn btn-secondary" (click)="resetForm()">Cancelar</button>
     </div>
   </div>
-  }@else{
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <button class="btn btn-outline-light" (click)="showInputDish()">
-      <i class="bi bi-plus">
-        <span>Añadir plato</span>
-      </i>
-    </button>
-  </div>
   }
-
+  <div class="row g-3 mb-4">
+    <div class="col-md-6">
+      <label for="sortPrice" class="form-label text-white">Ordenar por precio</label>
+      <select id="sortPrice" class="form-select" [value]="selectedPriceOrder" (change)="onPriceOrderChange($event)">
+        <option value="none">Sin orden</option>
+        <option value="asc">De menor a mayor</option>
+        <option value="desc">De mayor a menor</option>
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label for="filterCategory" class="form-label text-white">Categoría</label>
+      <select id="filterCategory" class="form-select" [value]="selectedCategory" (change)="onCategoryChange($event)">
+        @for (category of categoryOptions; track category.value) {
+        <option [value]="category.value">{{ category.label }}</option>
+        }
+      </select>
+    </div>
+  </div>
   <div class="row">
-    @for (plato of listaPlatos; track plato.id) {
+    @for (plato of filteredDishes$ | async; track plato.id) {
     <div class="col-md-4 col-sm-6 mb-4">
       <app-dish-card [dish]="plato"></app-dish-card>
     </div>

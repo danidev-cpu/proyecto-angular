@@ -1,4 +1,4 @@
-<div class="card bg-black text-white border-light mb-4 shadow">
+<div class="card bg-dark text-white border-light mb-4 shadow">
   <img [src]="dish.image || 'assets/placeholder.jpg'" class="card-img-top" [alt]="dish.name">
 
   <div class="card-body">
@@ -7,7 +7,5 @@
       <span class="badge bg-light text-dark">{{ dish.price | currency:'EUR' }}</span>
     </div>
     <p class="card-text text-secondary mt-2 small">{{ dish.description }}</p>
-
-    <button class="btn btn-sm btn-outline-light w-100 mt-2">Detalles</button>
   </div>
 </div>

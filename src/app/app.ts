@@ -6,6 +6,8 @@ import { Admin } from './pages/admin/admin';
 import { Home } from './pages/home/home';
 import { Menu } from './pages/menu/menu';
 
+
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, DishCard, Navbar, Admin, Home, Menu],

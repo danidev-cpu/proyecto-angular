@@ -3,7 +3,7 @@ export interface IDish {
   name: string;
   description: string;
   price: number;
-  category: 'entrantes' | 'principales' | 'postres' | 'bebidas';
+  category: string;
   enabled: boolean;
   image?: string;
 }

@@ -1,9 +1,6 @@
 p {
   color: #fff;
-}
 
-.btn {
-  
 }
 
 .btn-outline-light:hover {
@@ -13,5 +10,9 @@ p {
 }
 
 .btn-outline-light:hover span {
+  color: black;
+}
+
+option {
   color: black;
 }
